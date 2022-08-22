@@ -1,0 +1,17 @@
+services:
+  api-boberto-services:
+    build:
+      context: C:\Users\gedeo\source\repos\api-boberto-services
+      dockerfile: api-boberto-services/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: apibobertoservices
+    ports:
+    - published: 5001
+      target: 80
+    - target: 80
+    volumes:
+    - C:\Users\gedeo\source\repos\api-boberto-services:/api:rw
+    - /:/rootfs:ro
+    - /var/run/docker.sock:/var/run/docker.sock:rw
+version: '3.4'

@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  api-boberto-services:
+    image: ${DOCKER_REGISTRY-}apibobertoservices
+    build:
+      context: .
+      dockerfile: api-boberto-services/Dockerfile
+    ports: 
+    - "5001:80"
+    volumes:
+    - ./:/api
+    - /:/rootfs:ro
+    - /var/run/docker.sock:/var/run/docker.sock
+
