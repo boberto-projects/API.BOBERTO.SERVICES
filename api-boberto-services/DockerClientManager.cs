@@ -2,6 +2,9 @@
 using api_boberto_services.Models;
 using Docker.DotNet;
 using Docker.DotNet.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace api_boberto_services
 {
