@@ -8,31 +8,22 @@ namespace api_boberto_services.Queries.Docker.GetContainerList
     [BindRequired]
     public class GetContainerListQuery : IQueryModel<GetContainerListQuery>
     {
-        public string CPFCNPJ { get; set; }
+        public string ContainerName { get; set; }
 
-        //public static override ValueTask<GetContainerListQuery> BindAsync(HttpContext context)
-        //{
-        //    return ValueTask.FromResult<GetContainerListQuery?>(
-        //        new GetContainerListQuery()
-        //        {
-        //            CPFCNPJ = context.Request.Query["CPFCNPJ"]
-        //        });
-        //}
-
-        //public static ValueTask<GetContainerListQuery> BindAsync(HttpContext context)
-        //{
-        //    return ValueTask.FromResult<GetContainerListQuery?>(
-        //        new GetContainerListQuery()
-        //        {
-        //            CPFCNPJ = context.Request.Query["CPFCNPJ"]
-        //       }); 
-        //}
+        public static  ValueTask<GetContainerListQuery> BindAsync(HttpContext context)
+        {
+            return ValueTask.FromResult<GetContainerListQuery?>(
+                new GetContainerListQuery()
+                {
+                    ContainerName = context.Request.Query["ContainerName"]
+                });
+        }     
 
         public override void Validator()
         {
-            if (string.IsNullOrEmpty(CPFCNPJ))
+            if (string.IsNullOrEmpty(ContainerName))
             {
-                throw new Exception("SEM CPFCNPJ");
+                throw new Exception("SEM ContainerName");
             }
         }
     }

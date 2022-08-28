@@ -7,8 +7,7 @@ namespace api_boberto_services.Queries.Docker.GetContainerList
     {
         public override IResult Handle(GetContainerListQuery query)
         {
-            var listFake = new List<string>() { "teste", "teste1", "teste2", query.CPFCNPJ };
-            return Results.Ok(listFake);
+            return Results.Ok(query.ContainerName);
         }
     }
 }
