@@ -21,16 +21,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-var type = typeof(ICommandBase);
+var commandHandlerType = typeof(ICommandBase);
+var queryBaseHandlerType = typeof(IQueryBase);
+
 var types = AppDomain.CurrentDomain.GetAssemblies()
     .SelectMany(s => s.GetTypes())
-    .Where(p => type.IsAssignableFrom(p) && p.Namespace.StartsWith("api_boberto_services.Commands"));
+    .Where(p => commandHandlerType.IsAssignableFrom(p) && p.Namespace.StartsWith("api_boberto_services.Commands") || queryBaseHandlerType.IsAssignableFrom(p) && p.Namespace.StartsWith("api_boberto_services.Queries"));
 
 foreach (var cmd in types)
 {
     var commandRoute = cmd.Name.Replace("Handler", "");
     dynamic bClass = Activator.CreateInstance(cmd);
-    
     bClass.CreateRoute(app, commandRoute);
 }
 

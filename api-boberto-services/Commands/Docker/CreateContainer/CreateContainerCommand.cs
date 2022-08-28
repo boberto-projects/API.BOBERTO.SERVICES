@@ -12,7 +12,6 @@ namespace api_boberto_services.Commands.Docker.CreateContainer
             {
                 throw new Exception("É hora de testar o comportamento do validator");
             }
-            throw new Exception("JHGEWYGRYUEWRGYUEWRGYUEWGEYWUGYUEWGU");
         }
 
     }

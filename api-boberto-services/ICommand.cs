@@ -7,15 +7,11 @@ using System.Text.Json.Serialization;
 
 namespace api_boberto_services
 {
-    public interface ICommandBase
-    {
-
-    }
+    public interface ICommandBase{}
     public abstract class ICommandModel<T>
     {
         public abstract void Validator();
     }
-
     public abstract class ICommandHandler<T>: ICommandBase
     {
         public abstract IResult Handle(T command);
@@ -24,6 +20,10 @@ namespace api_boberto_services
         {
             app.MapPost(route, ([FromBody] T request) =>
             {
+                if(request is ICommandModel<T> commandModel)
+                {
+                    commandModel.Validator();
+                }
                 return Handle(request);
             }).WithTags(typeof(T).Name);
         }

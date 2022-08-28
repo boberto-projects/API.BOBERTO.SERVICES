@@ -9,10 +9,5 @@ namespace api_boberto_services.Commands.Docker.Banana
         {
             throw new System.NotImplementedException();
         }
-
-        public override void Validator()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
