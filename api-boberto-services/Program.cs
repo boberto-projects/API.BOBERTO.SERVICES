@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<DockerClientManager>();
+
 
 
 var app = builder.Build();
@@ -34,26 +34,5 @@ foreach (var cmd in types)
     dynamic bClass = Activator.CreateInstance(cmd);
     bClass.CreateRoute(app, commandRoute);
 }
-
-
-//app.MapPost("/Docker/container/list", async ([FromServices] DockerClientManager dockerClientManager, [FromBody] ContainersListParameters request) =>
-//{
-//   return await dockerClientManager.GetContainerList(request);
-//})
-//.WithTags("Docker Actions");
-
-//app.MapPost("/Docker/container/create", async ([FromServices] DockerClientManager dockerClientManager, [FromBody] CreateContainerParameters request) =>
-//{
-//     await dockerClientManager.CreateContainer(request);
-//    return Results.Ok();
-//})
-//.WithTags("Docker Actions");
-
-//app.MapPost("/Docker/image/create", async ([FromServices] DockerClientManager dockerClientManager, [FromBody] CreateImageRequest request) =>
-//{
-//    await dockerClientManager.CreateImage(request);
-//    return Results.Ok();
-//})
-//.WithTags("Docker Actions");
 
 app.Run();

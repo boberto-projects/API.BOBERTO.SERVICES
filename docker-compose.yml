@@ -6,10 +6,10 @@ services:
     build:
       context: .
       dockerfile: api-boberto-services/Dockerfile
-    ports: 
-    - "5001:80"
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5001:80"
     volumes:
-    - ./:/api
-    - /:/rootfs:ro
-    - /var/run/docker.sock:/var/run/docker.sock
-
+      - ./:/api
+      - /var/run/docker.sock:/var/run/docker.sock
