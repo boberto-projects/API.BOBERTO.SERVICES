@@ -1,13 +1,16 @@
 using api_authentication_boberto.Integrations.DiscordApiClient;
 using api_boberto_services;
 using api_boberto_services.ApiConfig;
+using api_boberto_services.Integracao.Discord;
 using ConfigurationSubstitution;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RestEase.HttpClientFactory;
 using System;
 using System.Linq;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,13 +23,15 @@ var config = new ConfigurationBuilder()
 .Build();
 
 builder.Services.Configure<DiscordApiConfig>(options => config.GetSection("DiscordAPIConfig").Bind(options));
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 DiscordApiBuilder.BuildDiscordAPI(builder.Services, config);
 
-
 var app = builder.Build();
+
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -44,8 +49,10 @@ var types = AppDomain.CurrentDomain.GetAssemblies()
 foreach (var cmd in types)
 {
     var commandRoute = cmd.Name.Replace("Handler", "");
-    dynamic bClass = Activator.CreateInstance(cmd, false, new object[] { app.Services });
+    dynamic bClass = Activator.CreateInstance(cmd, app.Services);
+
     bClass.CreateRoute(app, commandRoute);
 }
+
 
 app.Run();

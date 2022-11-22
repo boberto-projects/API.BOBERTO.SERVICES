@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using System;
 
 namespace api_boberto_services
 {
@@ -10,6 +11,13 @@ namespace api_boberto_services
     }
     public abstract class IQueryHandler<T> : IQueryBase
     {
+        private IServiceProvider _serviceProvider;
+
+        public IQueryHandler(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+
         public abstract IResult Handle(T query);
 
         public void CreateRoute(WebApplication app, string route)

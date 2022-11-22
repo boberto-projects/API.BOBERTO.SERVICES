@@ -16,21 +16,15 @@ namespace api_boberto_services
     {
         public abstract void Validator();
     }
-    public abstract class CommandBase : ICommandBase
+    public abstract class ICommandHandler<T> : ICommandBase
     {
-        protected IServiceProvider _services;
-        protected CommandBase(IServiceProvider services)
-        {
-            _services = services;
-        }
-    }
-    public abstract class ICommandHandler<T> : CommandBase
-    {
-        protected ICommandHandler(IServiceProvider services) : base(services)
-        {
-        }
+        private IServiceProvider _serviceProvider;
+        public abstract void Handle(T command);
 
-        public abstract IResult Handle(T command);
+        public ICommandHandler(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
 
         public void CreateRoute(WebApplication app, string route)
         {
@@ -40,7 +34,8 @@ namespace api_boberto_services
                 {
                     commandModel.Validator();
                 }
-                return Handle(request);
+                Handle(request);
+                return Results.Ok();
             }).WithTags(typeof(T).Name);
         }
     }

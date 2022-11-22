@@ -9,24 +9,23 @@ namespace api_boberto_services.Commands
 {
     public class ExemploCommandHandler : ICommandHandler<ExemploCommand>
     {
-
         private IDiscord _discordApiClient { get; set; }
         private DiscordApiConfig _discordApiConfig { get; set; }
-        public ExemploCommandHandler(IServiceProvider services) : base(services)
+
+        public ExemploCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            _discordApiClient = services.GetService<IDiscord>();
-            _discordApiConfig = services.GetService<IOptions<DiscordApiConfig>>().Value;
+            _discordApiClient = serviceProvider.GetService<IDiscord>();
+            _discordApiConfig = serviceProvider.GetService<IOptions<DiscordApiConfig>>().Value;
         }
-
-
-        public override IResult Handle(ExemploCommand command)
+        public override void Handle(ExemploCommand command)
         {
-            _discordApiClient.EnviarMensagem(_discordApiConfig.WebHookId, _discordApiConfig.WebHookToken, new api_authentication_boberto.Integrations.DiscordApiClient.DiscordWebHookRequest()
+            var discordGithubGroupRequest = new api_authentication_boberto.Integrations.DiscordApiClient.DiscordWebHookRequest()
             {
-                Content = "teste de notificação - boberto api service"
-            });
-
-            return Results.Ok();
+                Content = command.Mensagem
+            };
+            var webHookId = _discordApiConfig.WebHookId;
+            var webHookToken = _discordApiConfig.WebHookToken;
+            _discordApiClient.EnviarMensagem(webHookId, webHookToken, discordGithubGroupRequest);
         }
     }
 }
