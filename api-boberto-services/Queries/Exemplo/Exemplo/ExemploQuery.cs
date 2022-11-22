@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace api_boberto_services.Queries.Docker.GetContainerList
+namespace api_boberto_services.Queries
 {
     [BindProperties]
-    public class GetContainerListQuery : IQueryModel<GetContainerListQuery>
+    public class ExemploQuery : IQueryModel<ExemploQuery>
     {
         public string ContainerName { get; set; }
         public string DockerName { get; set; }
