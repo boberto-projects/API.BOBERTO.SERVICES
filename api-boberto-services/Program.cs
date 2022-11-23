@@ -49,9 +49,9 @@ var types = AppDomain.CurrentDomain.GetAssemblies()
 foreach (var cmd in types)
 {
     var commandRoute = cmd.Name.Replace("Handler", "");
-    dynamic bClass = Activator.CreateInstance(cmd, app.Services);
+    dynamic bClass = Activator.CreateInstance(cmd);
 
-    bClass.CreateRoute(app, commandRoute);
+    bClass.CreateRoute(app, commandRoute, app.Services);
 }
 
 

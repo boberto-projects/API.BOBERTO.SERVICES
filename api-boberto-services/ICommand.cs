@@ -18,16 +18,12 @@ namespace api_boberto_services
     }
     public abstract class ICommandHandler<T> : ICommandBase
     {
-        private IServiceProvider _serviceProvider;
         public abstract void Handle(T command);
 
-        public ICommandHandler(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
 
-        public void CreateRoute(WebApplication app, string route)
+        public void CreateRoute(WebApplication app, string route, IServiceProvider serviceProvider)
         {
+            this.DI(serviceProvider);
             app.MapPost(route, ([FromBody] T request) =>
             {
                 if (request is ICommandModel<T> commandModel)

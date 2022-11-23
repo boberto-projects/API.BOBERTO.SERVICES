@@ -10,21 +10,17 @@ namespace api_boberto_services.Commands
     public class ExemploCommandHandler : ICommandHandler<ExemploCommand>
     {
         private IDiscord _discordApiClient { get; set; }
-        private DiscordApiConfig _discordApiConfig { get; set; }
-
-        public ExemploCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider)
-        {
-            _discordApiClient = serviceProvider.GetService<IDiscord>();
-            _discordApiConfig = serviceProvider.GetService<IOptions<DiscordApiConfig>>().Value;
-        }
+        private IOptions<DiscordApiConfig> _discordApiConfig { get; set; }
         public override void Handle(ExemploCommand command)
         {
+
+            var discordConfig = _discordApiConfig.Value;
             var discordGithubGroupRequest = new api_authentication_boberto.Integrations.DiscordApiClient.DiscordWebHookRequest()
             {
                 Content = command.Mensagem
             };
-            var webHookId = _discordApiConfig.WebHookId;
-            var webHookToken = _discordApiConfig.WebHookToken;
+            var webHookId = discordConfig.WebHookId;
+            var webHookToken = discordConfig.WebHookToken;
             _discordApiClient.EnviarMensagem(webHookId, webHookToken, discordGithubGroupRequest);
         }
     }
