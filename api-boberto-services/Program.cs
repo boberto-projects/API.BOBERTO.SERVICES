@@ -22,7 +22,7 @@ var config = new ConfigurationBuilder()
 
 builder.Services.Configure<DiscordApiConfig>(options => config.GetSection("DiscordAPIConfig").Bind(options));
 builder.Services.AddRestEaseClient<INtfyApi>("https://ntfy.sh");
-
+builder.Services.AddHttpClient();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

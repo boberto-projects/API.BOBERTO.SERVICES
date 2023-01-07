@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 namespace api_boberto_services.Application
@@ -11,6 +12,7 @@ namespace api_boberto_services.Application
     {
         public static void Startup(WebApplication app)
         {
+
             var commandHandlerType = typeof(ICommandBase);
             var queryBaseHandlerType = typeof(IQueryBase);
 
