@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Reflection;
 
-namespace api_boberto_services
+namespace api_boberto_services.Application
 {
     public interface IQueryBase { }
     public abstract class IQueryModel<T>

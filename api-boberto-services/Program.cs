@@ -1,7 +1,7 @@
-using api_authentication_boberto.Integrations.DiscordApiClient;
-using api_boberto_services;
-using api_boberto_services.ApiConfig;
-using api_boberto_services.Integracao.Discord;
+
+using api_boberto_services.Application;
+using api_boberto_services.Application.Message;
+using api_boberto_services.Integracao.Ntfy;
 using ConfigurationSubstitution;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -10,10 +10,8 @@ using Microsoft.Extensions.Hosting;
 using RestEase.HttpClientFactory;
 using System;
 using System.Linq;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-
 var config = new ConfigurationBuilder()
 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
 .AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)
@@ -23,11 +21,11 @@ var config = new ConfigurationBuilder()
 .Build();
 
 builder.Services.Configure<DiscordApiConfig>(options => config.GetSection("DiscordAPIConfig").Bind(options));
+builder.Services.AddRestEaseClient<INtfyApi>("https://ntfy.sh");
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-DiscordApiBuilder.BuildDiscordAPI(builder.Services, config);
 
 var app = builder.Build();
 
@@ -39,20 +37,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-var commandHandlerType = typeof(ICommandBase);
-var queryBaseHandlerType = typeof(IQueryBase);
-
-var types = AppDomain.CurrentDomain.GetAssemblies()
-    .SelectMany(s => s.GetTypes())
-    .Where(p => commandHandlerType.IsAssignableFrom(p) && p.Namespace.StartsWith("api_boberto_services.Commands") || queryBaseHandlerType.IsAssignableFrom(p) && p.Namespace.StartsWith("api_boberto_services.Queries"));
-
-foreach (var cmd in types)
-{
-    var commandRoute = cmd.Name.Replace("Handler", "");
-    dynamic bClass = Activator.CreateInstance(cmd);
-
-    bClass.CreateRoute(app, commandRoute, app.Services);
-}
-
+CQRS.Startup(app);
 
 app.Run();

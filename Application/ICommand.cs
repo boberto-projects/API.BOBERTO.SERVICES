@@ -7,7 +7,7 @@ using System.Collections;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
-namespace api_boberto_services
+namespace api_boberto_services.Application
 {
     public interface ICommandBase
     {

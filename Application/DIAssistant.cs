@@ -3,12 +3,9 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace api_boberto_services
+namespace api_boberto_services.Application
 {
-    //public interface ICommandHandler<in T>
-    //{
-    //    ValueTask Handle(T command, CancellationToken token);
-    //}
+
 
     public static class DIAssistant
     {
@@ -25,7 +22,4 @@ namespace api_boberto_services
             }
         }
     }
-
-
-
 }

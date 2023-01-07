@@ -17,10 +17,16 @@
 
   <ItemGroup>
     <PackageReference Include="ConfigurationSubstitutor" Version="1.5.0" />
+    <PackageReference Include="CSharpDiscordWebhook.NET" Version="1.0.0" />
     <PackageReference Include="Docker.DotNet" Version="3.125.10" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="RestEase.HttpClientFactory" Version="1.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Integration\Integration.csproj" />
   </ItemGroup>
 
 </Project>

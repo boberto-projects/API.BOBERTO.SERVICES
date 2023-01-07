@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace api_boberto_services.Queries
+namespace api_boberto_services.Application.Queries
 {
     [BindProperties]
     public class ExemploQuery : IQueryModel<ExemploQuery>

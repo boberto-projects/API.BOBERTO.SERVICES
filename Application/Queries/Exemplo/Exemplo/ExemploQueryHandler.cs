@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace api_boberto_services.Queries
+namespace api_boberto_services.Application.Queries
 {
     public class ExemploQueryHandler : IQueryHandler<ExemploQuery>
     {
