@@ -24,7 +24,9 @@ namespace api_boberto_services.Application
                     queryModel.Validator();
                 }
                 return Handle(query);
-            }).WithTags(typeof(T).Name);
+            }).WithTags(typeof(T).Name)
+             .RequireAuthorization("ApiKey");
+
         }
     }
 }

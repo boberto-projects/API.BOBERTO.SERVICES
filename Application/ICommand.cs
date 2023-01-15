@@ -32,7 +32,8 @@ namespace api_boberto_services.Application
                 }
                 Handle(request);
                 return Results.Ok();
-            }).WithTags(typeof(T).Name);
+            }).WithTags(typeof(T).Name)
+            .RequireAuthorization("ApiKey");
         }
     }
 }
