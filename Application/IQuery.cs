@@ -17,7 +17,7 @@ namespace api_boberto_services.Application
         public void CreateRoute(WebApplication app, string route, IServiceProvider serviceProvider)
         {
             this.DI(serviceProvider);
-            app.MapGet(route, ([AsParameters] T query) =>
+            app.MapGet("queries/" + route, ([AsParameters] T query) =>
             {
                 if (query is IQueryModel<T> queryModel)
                 {
