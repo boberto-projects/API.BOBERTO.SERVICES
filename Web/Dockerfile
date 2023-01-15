@@ -3,20 +3,22 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["api-boberto-services/api-boberto-services.csproj", "api-boberto-services/"]
-RUN dotnet restore "api-boberto-services/api-boberto-services.csproj"
+COPY ["Web/Web.csproj", "Web/"]
+COPY ["Application/Application.csproj", "Application/"]
+COPY ["Application.Message/Application.Message.csproj", "Application.Message/"]
+COPY ["Integration/Integration.csproj", "Integration/"]
+RUN dotnet restore "Web/Web.csproj"
 COPY . .
-WORKDIR "/src/api-boberto-services"
-RUN dotnet build "api-boberto-services.csproj" -c Release -o /app/build
+WORKDIR "/src/Web"
+RUN dotnet build "Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "api-boberto-services.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "api-boberto-services.dll"]
+ENTRYPOINT ["dotnet", "Web.dll"]
