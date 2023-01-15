@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using RestEase.HttpClientFactory;
 using System;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = new ConfigurationBuilder()
@@ -55,7 +56,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.MapGet("", () => "OK");
 CQRS.Startup(app);
 
 app.Run();
