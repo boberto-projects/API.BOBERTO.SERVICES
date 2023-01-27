@@ -1,4 +1,5 @@
-﻿using api_boberto_services.Application.Message;
+﻿using api_boberto_services.Application;
+using api_boberto_services.Application.Message;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System;
@@ -18,9 +19,7 @@ namespace api_boberto_services.Application.Commands
         {
             var discordApiConfig = _discordApiConfig.Value;
             var httpClient = _httpClient.CreateClient();
-
             var channels = discordApiConfig.WebHooks.Where(x => command.Channels.Contains(x.Channel));
-
             foreach (var item in channels)
             {
                 var values = new Dictionary<string, string>
