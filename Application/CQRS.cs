@@ -1,12 +1,11 @@
-﻿using api_boberto_services;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-namespace api_boberto_services.Application
+namespace API.BOBERTO.SERVICES.APPLICATION
 {
     public static class CQRS
     {

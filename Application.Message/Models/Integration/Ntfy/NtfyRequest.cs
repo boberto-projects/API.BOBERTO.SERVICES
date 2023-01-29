@@ -1,7 +1,7 @@
-﻿using Application.Message.Models.Integration.Ntfy.Models;
+﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy.Models;
 using System.Collections.Generic;
 
-namespace Application.Message.Models.Integration.Ntfy
+namespace API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy
 {
     public class NtfyRequest
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Message.Models.Integration.Ntfy.Models
+namespace API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy.Models
 {
     public class NtfyActionModel
     {

@@ -1,4 +1,4 @@
-﻿using Application.Message.ApiConfig;
+﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;

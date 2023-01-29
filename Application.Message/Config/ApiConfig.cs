@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Message.ApiConfig
+namespace API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config
 {
     public class ApiConfig
     {
 
         public bool Swagger { get; set; }
         public AuthorizationApiKey Authorization { get; set; }
-
-
         public class AuthorizationApiKey
         {
             public bool Activate { get; set; }

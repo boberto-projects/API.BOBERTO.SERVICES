@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using API.BOBERTO.SERVICES.APPLICATION;
+using System.Collections;
 using System.Collections.Generic;
 
-namespace api_boberto_services.Application.Commands
+namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Discord
 {
     public class SendDiscordMessageCommand : ICommandModel<SendDiscordMessageCommand>
     {

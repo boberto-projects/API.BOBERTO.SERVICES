@@ -1,5 +1,5 @@
-﻿using api_boberto_services.Application;
-using api_boberto_services.Application.Message;
+﻿using API.BOBERTO.SERVICES.APPLICATION;
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System;
@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 
-namespace api_boberto_services.Application.Commands
+namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Discord
 {
     public class SendDiscordMessageCommandHandler : ICommandHandler<SendDiscordMessageCommand>
     {

@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace api_boberto_services.Application
+namespace API.BOBERTO.SERVICES.APPLICATION
 {
 
 

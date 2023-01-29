@@ -1,8 +1,9 @@
-﻿using Application.Message.Models.Integration.Ntfy;
-using Application.Message.Models.Integration.Ntfy.Models;
+﻿using API.BOBERTO.SERVICES.APPLICATION;
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy;
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy.Models;
 using System.Collections.Generic;
 
-namespace api_boberto_services.Application.Commands
+namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Ntfy
 {
     public class SendNtfyMessageCommand : ICommandModel<SendNtfyMessageCommand>
     {
@@ -26,15 +27,15 @@ namespace api_boberto_services.Application.Commands
         {
             return new NtfyRequest()
             {
-                Topic = this.Topic,
-                Message = this.Message,
-                Title = this.Title,
-                Tags = this.Tags,
-                Priority = this.Priority,
-                Attach = this.Attach,
-                Filename = this.Filename,
-                Click = this.Click,
-                Actions = this.Actions
+                Topic = Topic,
+                Message = Message,
+                Title = Title,
+                Tags = Tags,
+                Priority = Priority,
+                Attach = Attach,
+                Filename = Filename,
+                Click = Click,
+                Actions = Actions
             };
 
         }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace api_boberto_services.Application.Message
+namespace API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config
 {
     public class DiscordApiConfig
     {

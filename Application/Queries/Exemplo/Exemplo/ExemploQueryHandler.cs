@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using API.BOBERTO.SERVICES.APPLICATION;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 
-namespace api_boberto_services.Application.Queries
+namespace API.BOBERTO.SERVICES.APPLICATION.Queries.Exemplo.Exemplo
 {
     public class ExemploQueryHandler : IQueryHandler<ExemploQuery>
     {

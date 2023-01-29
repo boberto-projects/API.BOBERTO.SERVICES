@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application.Message\Application.Message.csproj" />
+    <ProjectReference Include="..\Application.Message\API.BOBERTO.SERVICES.APPLICATION.MESSAGES.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,8 @@
-﻿using api_boberto_services.Integracao.Ntfy;
+﻿using API.BOBERTO.SERVICES.APPLICATION;
+using API.BOBERTO.SERVICES.INTEGRATION.Ntfy;
 using System.Text.Json;
 
-namespace api_boberto_services.Application.Commands
+namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Ntfy
 {
     public class SendNtfyMessageCommandHandler : ICommandHandler<SendNtfyMessageCommand>
     {

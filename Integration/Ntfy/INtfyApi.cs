@@ -1,8 +1,8 @@
-﻿using Application.Message.Models.Integration.Ntfy;
+﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy;
 using RestEase;
 using System.Threading.Tasks;
 
-namespace api_boberto_services.Integracao.Ntfy
+namespace API.BOBERTO.SERVICES.INTEGRATION.Ntfy
 {
     public interface INtfyApi
     {
