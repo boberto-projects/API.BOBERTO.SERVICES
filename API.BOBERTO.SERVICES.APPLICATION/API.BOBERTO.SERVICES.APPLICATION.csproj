@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application.Message\API.BOBERTO.SERVICES.APPLICATION.MESSAGES.csproj" />
-    <ProjectReference Include="..\Integration\API.BOBERTO.SERVICES.INTEGRATIONS.csproj" />
+    <ProjectReference Include="..\API.BOBERTO.SERVICES.APPLICATION.MESSAGES\API.BOBERTO.SERVICES.APPLICATION.MESSAGES.csproj" />
+    <ProjectReference Include="..\API.BOBERTO.SERVICES.INTEGRATIONS\API.BOBERTO.SERVICES.INTEGRATIONS.csproj" />
   </ItemGroup>
 
 	<ItemGroup>

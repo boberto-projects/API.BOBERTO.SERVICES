@@ -1,5 +1,4 @@
-﻿using API.BOBERTO.SERVICES.APPLICATION;
-using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy;
+﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy;
 using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Ntfy.Models;
 using System.Collections.Generic;
 

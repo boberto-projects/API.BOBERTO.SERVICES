@@ -27,9 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\API.BOBERTO.SERVICES.APPLICATION.csproj" />
-    <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Integration\Integration.csproj" />
+    <ProjectReference Include="..\API.BOBERTO.SERVICES.APPLICATION.MESSAGES\API.BOBERTO.SERVICES.APPLICATION.MESSAGES.csproj" />
+    <ProjectReference Include="..\API.BOBERTO.SERVICES.APPLICATION\API.BOBERTO.SERVICES.APPLICATION.csproj" />
+    <ProjectReference Include="..\API.BOBERTO.SERVICES.INTEGRATIONS\API.BOBERTO.SERVICES.INTEGRATIONS.csproj" />
   </ItemGroup>
 
 </Project>
