@@ -1,17 +1,13 @@
 ﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
-using API.BOBERTO.SERVICES.INTEGRATION.Ntfy;
-using API.BOBERTO.SERVICES.INTEGRATION.SMSAdbTester;
-using API.BOBERTO.SERVICES.INTEGRATION.Zenvia;
-using api_authentication_boberto.Services.Email;
-using api_authentication_boberto.Services.Zenvio;
-using api_boberto_services.Application.Message;
+using API.BOBERTO.SERVICES.INTEGRATIONS.Ntfy;
+using API.BOBERTO.SERVICES.INTEGRATIONS.SMSAdbTester;
+using API.BOBERTO.SERVICES.INTEGRATIONS.Zenvia;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using RestEase.HttpClientFactory;
-using System;
 
-namespace api_boberto_services.Bootstrap
+namespace API.BOBERTO.SERVICES.WEB.Bootstrap
 {
     public static partial class Bootstrap
     {
@@ -21,7 +17,6 @@ namespace api_boberto_services.Bootstrap
             builder.Services.AddSMSAdbTesterApi();
             builder.Services.AddZenviaApi();
         }
-
         private static void AddNtfyIntegration(this IServiceCollection serviceCollection)
         {
             var serviceProvider = serviceCollection.BuildServiceProvider();
@@ -38,7 +33,10 @@ namespace api_boberto_services.Bootstrap
         {
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var ntfyApiConfig = serviceProvider.GetRequiredService<IOptions<ZenviaApiConfig>>().Value;
-            serviceCollection.AddRestEaseClient<IZenviaApi>(ntfyApiConfig.Url);
+            serviceCollection.AddRestEaseClient<IZenviaApi>(ntfyApiConfig.Url, new()
+            {
+                InstanceConfigurer = instance => instance.ApiKey = ntfyApiConfig.ApiKey,
+            });
         }
     }
 }

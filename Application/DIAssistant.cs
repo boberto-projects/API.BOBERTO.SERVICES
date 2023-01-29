@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace API.BOBERTO.SERVICES.APPLICATION
 {
-
-
     public static class DIAssistant
     {
         public static void DI<T>(this T instance, IServiceProvider serviceProvider)

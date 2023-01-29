@@ -1,8 +1,10 @@
-﻿using api_authentication_boberto.Models.Cache;
-using api_authentication_boberto.Models.Config;
-using api_authentication_boberto.Services.Redis;
+﻿
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Cache;
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
+using API.BOBERTO.SERVICES.APPLICATION.Services.Redis;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
+using System;
 
 namespace API.BOBERTO.SERVICES.APPLICATION.Services.ZenvioSecurity
 {
@@ -24,7 +26,7 @@ namespace API.BOBERTO.SERVICES.APPLICATION.Services.ZenvioSecurity
         {
             var obterCacheZenvio = GetCahe();
             var tentativasDeEnvio = obterCacheZenvio.Attempts;
-            if (tentativasDeEnvio >= zenvioConfig.MaximumAttempts)
+            if (tentativasDeEnvio >= zenvioConfig.MaxDiarySMSLimit)
             {
                 return true;
             }

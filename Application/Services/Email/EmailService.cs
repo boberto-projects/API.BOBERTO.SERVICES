@@ -1,4 +1,5 @@
-﻿using api_authentication_boberto.Models.Config;
+﻿
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Options;

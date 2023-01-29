@@ -1,10 +1,12 @@
 ﻿
 using API.BOBERTO.SERVICES.APPLICATION.Services.Email;
+using API.BOBERTO.SERVICES.APPLICATION.Services.Redis;
 using API.BOBERTO.SERVICES.APPLICATION.Services.Zenvio;
+using API.BOBERTO.SERVICES.APPLICATION.Services.ZenvioSecurity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace api_boberto_services.Bootstrap
+namespace API.BOBERTO.SERVICES.WEB.Bootstrap
 {
     public static partial class Bootstrap
     {
@@ -12,7 +14,8 @@ namespace api_boberto_services.Bootstrap
         {
             builder.Services.AddHttpClient();
             builder.Services.AddSingleton<IEmailService, EmailService>();
-            builder.Services.AddSingleton<ZenvioService>();
+            builder.Services.AddSingleton<IZenvioSecurityService, IZenvioSecurityService>();
+            builder.Services.AddSingleton<IZenvioService, ZenvioService>();
         }
     }
 }

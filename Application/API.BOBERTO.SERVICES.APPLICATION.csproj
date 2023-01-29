@@ -6,11 +6,17 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application.Message\API.BOBERTO.SERVICES.APPLICATION.MESSAGES.csproj" />
-    <ProjectReference Include="..\Integration\API.BOBERTO.SERVICES.INTEGRATION.csproj" />
+    <ProjectReference Include="..\Integration\API.BOBERTO.SERVICES.INTEGRATIONS.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MimeKit" Version="3.5.0" />
+		<PackageReference Include="MailKit" Version="3.5.0" />
+
 	</ItemGroup>
 
 </Project>

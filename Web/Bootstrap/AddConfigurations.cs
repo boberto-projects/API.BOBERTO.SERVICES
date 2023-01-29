@@ -1,15 +1,11 @@
 ﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
-using api_authentication_boberto.Integrations.SMSAdbTester;
-using api_authentication_boberto.Services.Email;
-using api_authentication_boberto.Services.Zenvio;
-using api_boberto_services.Integracao.Ntfy;
 using ConfigurationSubstitution;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace api_boberto_services.Bootstrap
+namespace API.BOBERTO.SERVICES.WEB.Bootstrap
 {
     public  static partial class Bootstrap
     {
@@ -25,8 +21,10 @@ namespace api_boberto_services.Bootstrap
             builder.Services.Configure<ApiConfig>(options => config.GetSection("ApiConfig").Bind(options));
             builder.Services.Configure<DiscordApiConfig>(options => config.GetSection("DiscordAPIConfig").Bind(options));
             builder.Services.Configure<SmsAdbTesterApiConfig>(options => config.GetSection("SmsAdbTesterApiConfig").Bind(options));
+            builder.Services.Configure<ZenvioSecurityConfig>(options => config.GetSection("ZenvioSecurityConfig").Bind(options));
             builder.Services.Configure<ZenviaApiConfig>(options => config.GetSection("ZenviaApiConfig").Bind(options));
             builder.Services.Configure<NtfyApiConfig>(options => config.GetSection("NtfyApiConfig").Bind(options));
+            builder.Services.Configure<SmtpConfig>(options => config.GetSection("SmtpConfig").Bind(options));
         }
     }
 }

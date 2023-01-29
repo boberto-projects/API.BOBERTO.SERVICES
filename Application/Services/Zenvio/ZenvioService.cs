@@ -1,15 +1,17 @@
-﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Zenvio.Request;
+﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Exceptions;
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Exceptions.Models;
+using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Zenvio.Request;
 using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Zenvio.Response;
 using API.BOBERTO.SERVICES.APPLICATION.Services.ZenvioSecurity;
-using API.BOBERTO.SERVICES.INTEGRATION.Zenvia;
-using api_authentication_boberto.Exceptions;
-using api_authentication_boberto.Models.Config;
-using api_authentication_boberto.Models.Enums;
+using API.BOBERTO.SERVICES.INTEGRATIONS.Zenvia;
 using Microsoft.Extensions.Options;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace API.BOBERTO.SERVICES.APPLICATION.Services.Zenvio
 {
-    public class ZenvioService
+    public class ZenvioService : IZenvioService
     {
         private IOptions<ZenviaApiConfig> zenviaApiConfig;
         private IZenvioSecurityService gerenciadorZenvio;
@@ -26,14 +28,14 @@ namespace API.BOBERTO.SERVICES.APPLICATION.Services.Zenvio
         {
             if (zenviaApiConfig.Value.Enabled == false)
             {
-                throw new CustomException(StatusCodeEnum.INTERN, "Recurso envio de SMS desativado");
+                throw new CustomException(StatusCodeEnum.INTERN, "Disabled resource");
             }
 
             gerenciadorZenvio.IncrementAttemp();
 
             if (gerenciadorZenvio.ReachedMaximumLimitOfAttempts())
             {
-                throw new CustomException(StatusCodeEnum.INTERN, "Limite máximo de SMS diário atingido.");
+                throw new CustomException(StatusCodeEnum.INTERN, "Max SMS LIMIT reachead");
             }
 
             var messageContent = new List<SendSMSRequest.Content>() { new()

@@ -2,7 +2,7 @@
 using RestEase;
 using System.Threading.Tasks;
 
-namespace API.BOBERTO.SERVICES.INTEGRATION.Ntfy
+namespace API.BOBERTO.SERVICES.INTEGRATIONS.Ntfy
 {
     public interface INtfyApi
     {

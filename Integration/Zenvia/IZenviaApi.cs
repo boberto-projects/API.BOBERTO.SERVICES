@@ -1,9 +1,8 @@
-﻿
-using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Zenvio.Request;
+﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Zenvio.Request;
 using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Models.Integration.Zenvio.Response;
 using RestEase;
 
-namespace API.BOBERTO.SERVICES.INTEGRATION.Zenvia
+namespace API.BOBERTO.SERVICES.INTEGRATIONS.Zenvia
 {
     public interface IZenviaApi
     {

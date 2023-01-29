@@ -1,9 +1,7 @@
-﻿using api_authentication_boberto.Integrations.SMSAdbTester;
-using api_boberto_services.Integracao.Ntfy;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace api_boberto_services.Bootstrap
+namespace API.BOBERTO.SERVICES.WEB.Bootstrap
 {
     public partial class Bootstrap
     {

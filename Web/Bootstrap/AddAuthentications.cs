@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using api_boberto_services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace api_boberto_services.Bootstrap
+namespace API.BOBERTO.SERVICES.WEB.Bootstrap
 {
     public static partial class Bootstrap
     {

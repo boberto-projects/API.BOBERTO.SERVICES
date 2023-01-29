@@ -1,6 +1,6 @@
 using API.BOBERTO.SERVICES.APPLICATION;
 using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
-using api_boberto_services.Bootstrap;
+using API.BOBERTO.SERVICES.WEB.Bootstrap;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

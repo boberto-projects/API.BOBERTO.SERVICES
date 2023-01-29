@@ -1,7 +1,7 @@
-﻿using API.BOBERTO.SERVICES.INTEGRATION.SMSAdbTester.Request;
+﻿using API.BOBERTO.SERVICES.INTEGRATIONS.SMSAdbTester.Request;
 using RestEase;
 
-namespace API.BOBERTO.SERVICES.INTEGRATION.SMSAdbTester
+namespace API.BOBERTO.SERVICES.INTEGRATIONS.SMSAdbTester
 {
     public interface ISmsAdbTesterApi
     {

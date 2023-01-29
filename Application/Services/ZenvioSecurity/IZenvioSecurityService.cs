@@ -1,4 +1,5 @@
-﻿using api_authentication_boberto.Models.Cache;
+﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Cache;
+using System;
 
 namespace API.BOBERTO.SERVICES.APPLICATION.Services.ZenvioSecurity
 {
