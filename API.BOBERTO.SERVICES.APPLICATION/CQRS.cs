@@ -26,7 +26,6 @@ namespace API.BOBERTO.SERVICES.APPLICATION
                 dynamic bClass = Activator.CreateInstance(cmd);
                 bClass.CreateRoute(app, commandRoute, app.Services);
             }
-
         }
     }
 }
