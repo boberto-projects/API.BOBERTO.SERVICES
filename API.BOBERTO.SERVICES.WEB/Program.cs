@@ -8,8 +8,10 @@ using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddConfigurations();
+builder.AddStorages();
 builder.AddIntegrations();
 builder.AddServices();
+builder.AddAuthentications();
 builder.AddSwagger();
 
 var app = builder.Build();

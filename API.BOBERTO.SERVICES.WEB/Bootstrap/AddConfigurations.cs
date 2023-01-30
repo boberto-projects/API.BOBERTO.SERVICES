@@ -11,13 +11,15 @@ namespace API.BOBERTO.SERVICES.WEB.Bootstrap
     {
         public static void AddConfigurations(this WebApplicationBuilder builder)
         {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var config = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                 .AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .EnableSubstitutions("%", "%")
                 .Build();
+            builder.Services.AddSingleton(config);
             builder.Services.Configure<ApiConfig>(options => config.GetSection("ApiConfig").Bind(options));
             builder.Services.Configure<DiscordApiConfig>(options => config.GetSection("DiscordAPIConfig").Bind(options));
             builder.Services.Configure<SmsAdbTesterApiConfig>(options => config.GetSection("SmsAdbTesterApiConfig").Bind(options));

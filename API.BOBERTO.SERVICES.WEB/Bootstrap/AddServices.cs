@@ -14,8 +14,8 @@ namespace API.BOBERTO.SERVICES.WEB.Bootstrap
         {
             builder.Services.AddHttpClient();
             builder.Services.AddSingleton<IEmailService, EmailService>();
-            builder.Services.AddSingleton<IZenvioSecurityService, IZenvioSecurityService>();
             builder.Services.AddSingleton<IZenvioService, ZenvioService>();
+            builder.Services.AddSingleton<IZenvioSecurityService, ZenvioSecurityService>();
         }
     }
 }
