@@ -5,6 +5,7 @@
 [x] Ntfy integration
 [x] Zenvia integration
 [x] SMTP email service
+[x] Integration with [Python ADB faker api](https://github.com/brutalzinn/python-sms-adbtester)
 [x] Discord web hook integration
 [x] CQRS PATTERN
 [] Firebase integration
