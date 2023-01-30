@@ -1,13 +1,10 @@
-# Base para o projeto api-boberto-services
+# API.BOBERTO.SERVICES CQRS PATTERN REFACTOR 29/01/2023
 
-### Essa é uma tentativa de executar o padrão CQRS de forma mais automatizada.
-### Usando reflection para criar as instâncias das rotas e segregando por Comando e Query e responsabiliddes diferentes.
+### STILL DEVELOPMENT
 
-
-# Objetivo
-
-* Gerenciamento do Docker
-* Gerenciamento de notificação por push notification usando ntfy
-* Gerenciamento de webhooks para notificação
-* Middleware entre serviços que requerem autenticação e api-authentication-boberto
-* Gerenciamento de filas para serviços entre o Launcher Boberto, api-modpackmanager
+[x] Ntfy integration
+[x] Zenvia integration
+[x] SMTP email service
+[x] Discord web hook integration
+[x] CQRS PATTERN
+[] Firebase integration
