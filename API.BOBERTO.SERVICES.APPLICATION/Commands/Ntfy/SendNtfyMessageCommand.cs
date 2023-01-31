@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Ntfy
 {
-    public class SendNtfyMessageCommand : ICommandModel<SendNtfyMessageCommand>
+    public class SendNtfyMessageCommand : CommandAbstract<SendNtfyMessageCommand>
     {
         public string Topic { get; set; }
         public string Message { get; set; }

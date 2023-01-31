@@ -13,11 +13,11 @@ namespace API.BOBERTO.SERVICES.APPLICATION
     public interface ICommandBase
     {
     }
-    public abstract class ICommandModel<T>
+    public abstract class CommandAbstract<T>
     {
         public abstract void Validator();
     }
-    public abstract class ICommandHandler<T> : ICommandBase
+    public abstract class CommandAbstractHandler<T> : ICommandBase
     {
         public abstract void Handle(T command);
 
@@ -26,7 +26,7 @@ namespace API.BOBERTO.SERVICES.APPLICATION
             this.DI(serviceProvider);
             app.MapPost("commands/" + route, ([FromBody] T request) =>
             {
-                if (request is ICommandModel<T> commandModel)
+                if (request is CommandAbstract<T> commandModel)
                 {
                     commandModel.Validator();
                 }

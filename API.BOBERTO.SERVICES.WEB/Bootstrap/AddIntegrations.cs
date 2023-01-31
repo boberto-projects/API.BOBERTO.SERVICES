@@ -1,4 +1,5 @@
 ﻿using API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config;
+using API.BOBERTO.SERVICES.INTEGRATIONS.Firebase;
 using API.BOBERTO.SERVICES.INTEGRATIONS.Ntfy;
 using API.BOBERTO.SERVICES.INTEGRATIONS.SMSAdbTester;
 using API.BOBERTO.SERVICES.INTEGRATIONS.Zenvia;
@@ -16,6 +17,7 @@ namespace API.BOBERTO.SERVICES.WEB.Bootstrap
             builder.Services.AddNtfyIntegration();
             builder.Services.AddSMSAdbTesterApi();
             builder.Services.AddZenviaApi();
+            builder.Services.AddFirebaseApi();
         }
         private static void AddNtfyIntegration(this IServiceCollection serviceCollection)
         {
@@ -36,6 +38,15 @@ namespace API.BOBERTO.SERVICES.WEB.Bootstrap
             serviceCollection.AddRestEaseClient<IZenviaApi>(ntfyApiConfig.Url, new()
             {
                 InstanceConfigurer = instance => instance.ApiKey = ntfyApiConfig.ApiKey,
+            });
+        }
+        private static void AddFirebaseApi(this IServiceCollection serviceCollection)
+        {
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var firebaseApiConfig = serviceProvider.GetRequiredService<IOptions<FirebaseApiConfig>>().Value;
+            serviceCollection.AddRestEaseClient<IFirebaseApi>(firebaseApiConfig.Url, new()
+            {
+                InstanceConfigurer = instance => instance.Authorization = firebaseApiConfig.ApiKey,
             });
         }
     }

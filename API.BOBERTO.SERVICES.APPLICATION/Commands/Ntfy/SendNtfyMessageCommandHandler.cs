@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Ntfy
 {
-    public class SendNtfyMessageCommandHandler : ICommandHandler<SendNtfyMessageCommand>
+    public class SendNtfyMessageCommandHandler : CommandAbstractHandler<SendNtfyMessageCommand>
     {
         private INtfyApi _ntfyApi { get; set; }
 

@@ -11,7 +11,7 @@ using System.Text.Json;
 
 namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Discord
 {
-    public class SendDiscordMessageCommandHandler : ICommandHandler<SendDiscordMessageCommand>
+    public class SendDiscordMessageCommandHandler : CommandAbstractHandler<SendDiscordMessageCommand>
     {
         private IOptions<DiscordApiConfig> _discordApiConfig { get; set; }
         private IHttpClientFactory _httpClient { get; set; }

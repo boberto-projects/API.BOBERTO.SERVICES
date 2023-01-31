@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Discord
 {
-    public class SendDiscordMessageCommand : ICommandModel<SendDiscordMessageCommand>
+    public class SendDiscordMessageCommand : CommandAbstract<SendDiscordMessageCommand>
     {
         public IEnumerable<string> Channels { get; set; }
         public string Content { get; set; }
