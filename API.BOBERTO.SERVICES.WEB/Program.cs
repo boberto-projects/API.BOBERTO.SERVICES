@@ -23,7 +23,6 @@ if (app.Services.GetRequiredService<IOptions<ApiConfig>>().Value.Swagger)
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.MapGet("", () => "OK");
 CQRS.Startup(app);
 
 app.Run();

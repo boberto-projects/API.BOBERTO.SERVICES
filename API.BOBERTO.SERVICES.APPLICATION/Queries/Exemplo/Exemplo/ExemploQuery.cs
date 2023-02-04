@@ -4,7 +4,7 @@ using System;
 namespace API.BOBERTO.SERVICES.APPLICATION.Queries.Exemplo.Exemplo
 {
     [BindProperties]
-    public class ExemploQuery : IQueryModel<ExemploQuery>
+    public class ExemploQuery : QueryModel<ExemploQuery>
     {
         public string ContainerName { get; set; }
         public string DockerName { get; set; }

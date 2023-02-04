@@ -11,10 +11,6 @@ namespace API.BOBERTO.SERVICES.APPLICATION.Commands.Firebase
     public class SendFirebaseNotificationCommandHandler : CommandAbstractHandler<SendFirebaseNotificationCommand>
     {
         private IFirebaseApi firebaseApi { get; set; }
-        public SendFirebaseNotificationCommandHandler(IFirebaseApi firebaseApi)
-        {
-            this.firebaseApi = firebaseApi;
-        }
         public override void Handle(SendFirebaseNotificationCommand command)
         {
             var request = new FirebaseNotificationRequest()

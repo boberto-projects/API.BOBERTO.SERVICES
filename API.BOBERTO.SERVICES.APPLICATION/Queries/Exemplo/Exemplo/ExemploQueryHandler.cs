@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace API.BOBERTO.SERVICES.APPLICATION.Queries.Exemplo.Exemplo
 {
-    public class ExemploQueryHandler : IQueryHandler<ExemploQuery>
+    public class ExemploQueryHandler : QueryHandler<ExemploQuery>
     {
         public override IResult Handle(ExemploQuery query)
         {

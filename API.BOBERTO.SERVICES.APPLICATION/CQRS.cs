@@ -12,17 +12,35 @@ namespace API.BOBERTO.SERVICES.APPLICATION
     {
         public static void Startup(WebApplication app)
         {
-            var commandHandlerType = typeof(ICommandBase);
-            var queryBaseHandlerType = typeof(IQueryBase);
-            ///we need to refactor this after somepointçç
+            app.CreateCommandRoute();
+            app.CreateQueryRoute();
+        }
 
+        private static void CreateCommandRoute(this WebApplication app)
+        {
+            var commandHandlerType = typeof(ICommandBase);
             var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(p => commandHandlerType.IsAssignableFrom(p) && p.Namespace.StartsWith("API.BOBERTO.SERVICES.APPLICATION.Commands") || queryBaseHandlerType.IsAssignableFrom(p) && p.Namespace.StartsWith("API.BOBERTO.SERVICES.APPLICATION.Queries"));
+              .SelectMany(s => s.GetTypes())
+              .Where(p => commandHandlerType.IsAssignableFrom(p) && p.Namespace.StartsWith("API.BOBERTO.SERVICES.APPLICATION.Commands"));
 
             foreach (var cmd in types)
             {
-                var commandRoute = cmd.Name.Replace("Handler", "");
+                var commandRoute = cmd.Name.Replace("CommandHandler", "");
+                dynamic bClass = Activator.CreateInstance(cmd);
+                bClass.CreateRoute(app, commandRoute, app.Services);
+            }
+        }
+
+        private static void CreateQueryRoute(this WebApplication app)
+        {
+            var queryBaseHandlerType = typeof(IQueryBase);
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+              .SelectMany(s => s.GetTypes())
+                .Where(p =>  queryBaseHandlerType.IsAssignableFrom(p) && p.Namespace.StartsWith("API.BOBERTO.SERVICES.APPLICATION.Queries"));
+ 
+            foreach (var cmd in types)
+            {
+                var commandRoute = cmd.Name.Replace("QueryHandler", "");
                 dynamic bClass = Activator.CreateInstance(cmd);
                 bClass.CreateRoute(app, commandRoute, app.Services);
             }

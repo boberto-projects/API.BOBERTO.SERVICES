@@ -6,11 +6,11 @@ using System.Reflection;
 namespace API.BOBERTO.SERVICES.APPLICATION
 {
     public interface IQueryBase { }
-    public abstract class IQueryModel<T>
+    public abstract class QueryModel<T>
     {
         public abstract void Validator();
     }
-    public abstract class IQueryHandler<T> : IQueryBase
+    public abstract class QueryHandler<T> : IQueryBase
     {
         public abstract IResult Handle(T query);
 
@@ -19,7 +19,7 @@ namespace API.BOBERTO.SERVICES.APPLICATION
             this.DI(serviceProvider);
             app.MapGet("queries/" + route, ([AsParameters] T query) =>
             {
-                if (query is IQueryModel<T> queryModel)
+                if (query is QueryModel<T> queryModel)
                 {
                     queryModel.Validator();
                 }

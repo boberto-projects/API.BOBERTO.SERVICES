@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <PackageReference Include="ConfigurationSubstitutor" Version="1.5.0" />
-    <PackageReference Include="CSharpDiscordWebhook.NET" Version="1.0.0" />
     <PackageReference Include="Docker.DotNet" Version="3.125.10" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />

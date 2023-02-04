@@ -8,7 +8,6 @@ namespace API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config
 {
     public class ApiConfig
     {
-
         public bool Swagger { get; set; }
         public AuthorizationApiKey Authorization { get; set; }
         public class AuthorizationApiKey
@@ -17,6 +16,5 @@ namespace API.BOBERTO.SERVICES.APPLICATION.MESSAGES.Config
             public string ApiHeader { get; set; }
             public string ApiKey { get; set; }
         }
-
     }
 }
